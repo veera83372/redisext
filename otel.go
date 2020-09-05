@@ -169,9 +169,7 @@ func appendArg(b []byte, v interface{}) []byte {
 
 func appendUTF8String(dst []byte, src []byte) []byte {
 	if isSimple(src) {
-		dst = append(dst, '"')
 		dst = append(dst, src...)
-		dst = append(dst, '"')
 		return dst
 	}
 
@@ -195,7 +193,6 @@ func isSimpleByte(c byte) bool {
 }
 
 var simple = [256]bool{
-	' ': true,
 	'-': true,
 	'_': true,
 
