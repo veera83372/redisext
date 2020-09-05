@@ -170,7 +170,17 @@ func appendArg(b []byte, v interface{}) []byte {
 
 func appendUTF8String(dst []byte, src []byte) []byte {
 	if utf8.Valid(src) {
-		return append(dst, src...)
+		for _, c := range src {
+			switch c {
+			case '\n':
+				return append(dst, "\\n"...)
+			case '\r':
+				return append(dst, "\\r"...)
+			default:
+				return append(dst, c)
+			}
+		}
+		return dst
 	}
 
 	s := len(dst)
