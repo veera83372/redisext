@@ -7,4 +7,5 @@ require (
 	github.com/onsi/ginkgo v1.14.0
 	github.com/onsi/gomega v1.10.1
 	go.opentelemetry.io/otel v0.11.0
+	golang.org/x/exp v0.0.0-20200901203048-c4f52b2c50aa // indirect
 )
