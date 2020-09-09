@@ -24,7 +24,7 @@ func (OpenTelemetryHook) BeforeProcess(ctx context.Context, cmd redis.Cmder) (co
 		return ctx, nil
 	}
 
-	b := make([]byte, 32)
+	b := make([]byte, 0, 32)
 	b = appendCmd(b, cmd)
 
 	tracer := global.Tracer("github.com/go-redis/redis")
