@@ -15,6 +15,8 @@ import (
 	"go.opentelemetry.io/otel/label"
 )
 
+var tracer = global.Tracer("github.com/go-redis/redis")
+
 type OpenTelemetryHook struct{}
 
 var _ redis.Hook = OpenTelemetryHook{}
@@ -27,7 +29,6 @@ func (OpenTelemetryHook) BeforeProcess(ctx context.Context, cmd redis.Cmder) (co
 	b := make([]byte, 0, 32)
 	b = appendCmd(b, cmd)
 
-	tracer := global.Tracer("github.com/go-redis/redis")
 	ctx, span := tracer.Start(ctx, cmd.FullName())
 	span.SetAttributes(
 		label.String("db.system", "redis"),
