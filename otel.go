@@ -201,7 +201,9 @@ func isSimpleByte(c byte) bool {
 
 var simple = [256]bool{
 	'-': true,
+	'+': true,
 	'_': true,
+	':': true,
 
 	'0': true,
 	'1': true,

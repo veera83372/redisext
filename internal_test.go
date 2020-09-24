@@ -20,6 +20,9 @@ var _ = Describe("appendArg", func() {
 			Expect(string(b)).To(Equal(wanted))
 		},
 
+		Entry("", "-inf", "-inf"),
+		Entry("", "+inf", "+inf"),
+		Entry("", "foo:bar", "foo:bar"),
 		Entry("", "foo-123_BAR", "foo-123_BAR"),
 		Entry("", "foo\nbar", "666f6f0a626172"),
 		Entry("", "\000", "00"),
