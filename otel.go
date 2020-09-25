@@ -81,7 +81,6 @@ func (OpenTelemetryHook) BeforeProcessPipeline(ctx context.Context, cmds []redis
 		}
 	}
 
-	tracer := global.Tracer("github.com/go-redis/redis")
 	ctx, span := tracer.Start(ctx, "pipeline "+strings.Join(unqNames, " "))
 	span.SetAttributes(
 		label.String("db.system", "redis"),
