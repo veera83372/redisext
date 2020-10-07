@@ -1,4 +1,4 @@
-module github.com/go-redis/redisext
+module github.com/veera83372/redisext
 
 go 1.13
 
